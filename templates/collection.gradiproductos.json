@@ -1,7 +1,7 @@
 {
   "sections": {
     "product-grid": {
-      "type": "productsgrid",
+      "type": "collection-productsgrid",
       "settings": {
         "columns_desktop": 4,
         "image_ratio": "adapt",
