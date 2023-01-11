@@ -1456,6 +1456,8 @@
         }
       }
     },
+    "productsgrid": {
+      "name": "Productgrid"},
     "main-collection-product-grid": {
       "name": "Product grid",
       "settings": {
