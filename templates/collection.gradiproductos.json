@@ -8,8 +8,8 @@
         "color_scheme": "background-1"
       }
     },
-    "productsgrid": {
-      "type": "main-collection-productsgrid",
+    "products-grid": {
+      "type": "products-grid",
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
@@ -29,6 +29,6 @@
   },
   "order": [
     "banner",
-    "productsgrid"
+    "products-grid"
   ]
 }
