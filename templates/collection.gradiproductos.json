@@ -1,8 +1,10 @@
 {
   "sections": {
     "banner": {
-      "type": "productsgrid",
+      "type": "main-collection-banner",
       "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
         "color_scheme": "background-1"
       }
     },
