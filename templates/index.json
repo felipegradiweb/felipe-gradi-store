@@ -219,7 +219,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify:\/\/shop_images\/black-bag-over-the-shoulder.jpg",
-            "heading": "Image slide",
+            "heading": "Muy casual",
             "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
@@ -236,7 +236,8 @@
         "template--17543451345172__bf578620-3da2-42e2-9b30-38e16766af7a-16734747586a477053-1": {
           "type": "slide",
           "settings": {
-            "heading": "Image slide",
+            "image": "shopify:\/\/shop_images\/stylish-skirt-purse.jpg",
+            "heading": "Muy elegante",
             "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
