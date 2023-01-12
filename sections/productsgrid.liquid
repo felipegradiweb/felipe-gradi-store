@@ -54,7 +54,7 @@
         <div class="product-count-vertical light" role="status">
           <h2 class="product-count__text text-body">
             <span id="ProductCountDesktop">
-              {%- if collections['all'].products.length -%}
+              {%- if collections['all'].products.size -%}
                 {{ 'templates.search.results_with_count' | t: terms: collection.terms, count: collection.results_count }}
               {%- elsif collection.products_count == collection.all_products_count -%}
                 {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
@@ -78,7 +78,7 @@
     <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
     {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
       <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
-        {% render 'facets', results: collections['all'].products, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
+        {% render 'facets', results: collections['all'], enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
       </aside>
     {%- endif -%}
 
