@@ -104,7 +104,6 @@
         {%- else -%}
           <div class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}">
             <div class="loading-overlay gradient"></div>
-    
             <ul id="product-grid" data-id="{{ section.id }}" class="
               grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
               grid--{{ section.settings.columns_desktop }}-col-desktop">
@@ -201,7 +200,15 @@
         "type": "collection",
         "id": "collection",
         "label": "t:sections.featured-collection.settings.collection.label"
-      }, {
+      },   {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "default": 16,
+      "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+    },{
         "type": "range",
         "id": "products_to_show",
         "min": 2,
