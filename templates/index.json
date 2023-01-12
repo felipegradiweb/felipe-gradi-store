@@ -36,6 +36,7 @@
       ],
       "settings": {
         "image": "{{ shop.brand.cover_image }}",
+        "image_2": "shopify:\/\/shop_images\/man-holding-a-leather-bag-on-a-set-of-stairs.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "adapt_height_first_image": false,
@@ -117,7 +118,7 @@
         "product": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "bolso-children",
             "second_image": false
           }
         },
@@ -216,6 +217,7 @@
         "template--17543451345172__bf578620-3da2-42e2-9b30-38e16766af7a-16734747586a477053-0": {
           "type": "slide",
           "settings": {
+            "image": "shopify:\/\/shop_images\/black-bag-over-the-shoulder.jpg",
             "heading": "Image slide",
             "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
