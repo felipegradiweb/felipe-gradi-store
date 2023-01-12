@@ -134,6 +134,7 @@
         "image-with-text-1"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/black-bag-over-the-shoulder.jpg",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
