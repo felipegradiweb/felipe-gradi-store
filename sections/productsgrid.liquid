@@ -44,9 +44,9 @@
               <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
             </h2>
             <div class="select">
-              {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+              {%- assign sort_by = collections['all'].sort_by | default: collections['all'].default_sort_by -%}
               <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
-                {%- for option in collection.sort_options -%}
+                {%- for option in collections['all'].sort_options -%}
                   <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                 {%- endfor -%}
               </select>
@@ -61,9 +61,9 @@
         <div class="product-count-vertical light" role="status">
           <h2 class="product-count__text text-body">
             <span id="ProductCountDesktop">
-              {%- if collection.results_count -%}
+              {%- if collections['all'].results_count -%}
                 {{ 'templates.search.results_with_count' | t: terms: collection.terms, count: collection.results_count }}
-              {%- elsif collection.products_count == collection.all_products_count -%}
+              {%- elsif collections['all'].products_count == collection.all_products_count -%}
                 {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
               {%- else -%}
                 {{ 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}
@@ -88,10 +88,10 @@
         {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
       </aside>
     {%- endif -%}
-
+   {% comment %} {{collections['all'].products[0].results_count | json}} {% endcomment %}
     <div class="product-grid-container" id="ProductGridContainer">
-      {%- paginate collection.products by section.settings.products_per_page -%}
-        {%- if collection.products.size == 0 -%}
+      {%- paginate collections['all'].products by section.settings.products_per_page -%}
+        {%- if collections['all'].products.size == 0 -%}
           <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
             <div class="title-wrapper center">
@@ -108,7 +108,7 @@
             <ul id="product-grid" data-id="{{ section.id }}" class="
               grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
               grid--{{ section.settings.columns_desktop }}-col-desktop">
-              {%- for product in collection.products -%}
+              {%- for product in collections['all'].products -%}
                 {% assign lazy_load = false %}
                 {%- if forloop.index > 2 -%}
                   {%- assign lazy_load = true -%}
