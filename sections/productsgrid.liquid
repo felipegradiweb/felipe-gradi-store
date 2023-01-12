@@ -85,7 +85,7 @@
         aria-label="{{ 'general.slider.name' | t }}">
         {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
           <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}">
-            {% render 'card-product'
+            {% render 'card-product' 
              , card_product: product,
              media_aspect_ratio: section.settings.image_ratio,
              show_secondary_image: section.settings.show_secondary_image,
@@ -145,6 +145,15 @@
     "class": "section",
     "settings": [
       {
+        "type": "range",
+        "id": "products_per_page",
+        "min": 8,
+        "max": 24,
+        "step": 4,
+        "default": 16,
+        "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+      },
+      {
         "type": "text",
         "id": "title",
         "default": "Featured collection",
@@ -172,8 +181,7 @@
         "type": "richtext",
         "id": "description",
         "label": "t:sections.featured-collection.settings.description.label"
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "show_description",
         "label": "t:sections.featured-collection.settings.show_description.label",
