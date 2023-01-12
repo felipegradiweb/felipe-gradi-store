@@ -79,6 +79,53 @@
         "padding_bottom": 0
       }
     },
+    "09e181f5-419a-4df5-a7ac-bf419e51b078": {
+      "type": "image-banner",
+      "blocks": {
+        "template--17543451345172__09e181f5-419a-4df5-a7ac-bf419e51b078-1673540475222fedc8-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "template--17543451345172__09e181f5-419a-4df5-a7ac-bf419e51b078-1673540475222fedc8-1": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "template--17543451345172__09e181f5-419a-4df5-a7ac-bf419e51b078-1673540475222fedc8-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17543451345172__09e181f5-419a-4df5-a7ac-bf419e51b078-1673540475222fedc8-0",
+        "template--17543451345172__09e181f5-419a-4df5-a7ac-bf419e51b078-1673540475222fedc8-1",
+        "template--17543451345172__09e181f5-419a-4df5-a7ac-bf419e51b078-1673540475222fedc8-2"
+      ],
+      "settings": {
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -270,6 +317,7 @@
   "order": [
     "image_banner",
     "rich_text",
+    "09e181f5-419a-4df5-a7ac-bf419e51b078",
     "featured_collection",
     "collage",
     "video",
