@@ -18,7 +18,7 @@
     assign all_bolsos = section.settings.collection.products
   endif
 -%}
-{{ section.settings.collection.tags | json }}
+{{ section.settings.collection.current_type | json }}
 <div
   class="all-products"
 >
