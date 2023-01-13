@@ -1,6 +1,6 @@
 {
     "sections": {
-      "bannerfelipe": {
+      "product-grid": {
         "type": "bannerfelipe",
         "settings": {
           "show_collection_description": true,
@@ -11,7 +11,7 @@
   
     },
     "order": [
-      "bannerfelipe",
+      "product-grid",
      
     ]
   }
