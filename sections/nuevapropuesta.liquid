@@ -21,7 +21,7 @@
 <div
   class="all-products"
 >
-  {%- paginate section.settings.collection.products by section.settings.products_per_page -%}
+  {%- paginate all_bolsos by section.settings.products_per_page -%}
     {% for product in all_bolsos %}
       <div
         class="background-list_productspipe"
@@ -55,9 +55,9 @@
     }, {
     "type": "range",
     "id": "products_per_page",
-    "min": 4,
+    "min": 2,
     "max": 16,
-    "step": 4,
+    "step": 2,
     "default": 16,
     "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
   },
