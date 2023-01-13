@@ -13,9 +13,9 @@
   }
 {%- endstyle -%}
 {%- liquid
-  assign products_all = collections.all.products.size
+  assign products_all = collections.all.products
   if section.settings.collection.all_products_count != null
-    assign products_all = section.settings.collection.products.size
+    assign products_all = section.settings.collection.products
   endif
 -%}
 {{ products_all | json }}
