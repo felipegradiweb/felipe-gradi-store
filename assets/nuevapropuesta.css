@@ -16,3 +16,46 @@
     background:black;
     color:white
 }
+.total-variants{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom:5px
+}
+.total-variant-violeta{
+background:#8F00FF
+}
+.total-variant-menta{
+background:#497e76 
+}
+.total-variant-azul{
+background:blue 
+}
+.total-variant-cafe{
+background:#6F4E37
+}
+.total-variant-white{
+background:#ffff
+}
+.total-variant-gris{
+background:gray 
+}
+.total-variant-rojo{
+background:red 
+}
+.total-variant-negro{
+background:black 
+}
+.total-variant-lila{
+background:#C8A2C8
+}
+.total-variant-verde{
+background:green 
+}
+.total-variant{
+   border-radius:30px;
+   margin:2px;
+   border:1px solid black;
+   width:30px;
+   height:30px;cursor: pointer !important;
+}

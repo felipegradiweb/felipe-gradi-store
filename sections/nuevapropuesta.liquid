@@ -1,8 +1,10 @@
 {% comment %}
-  theme-check-disable ImgLazyLoading
-  class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
+theme-check-disable ImgLazyLoading
+class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
 {% endcomment %}
-
+<script
+  src="{{ 'pedir.js' | asset_url  }}"
+  defer="defer"></script>
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
 {{ 'nuevapropuesta.css' | asset_url | stylesheet_tag }}
 {%- style -%}
@@ -20,21 +22,33 @@
 -%}
 {{ section.settings.collection.title | json }}
 <div
-  class="all-products"
->
+  class="all-products">
   {%- paginate collections[all_bolsos].products by section.settings.products_per_page -%}
     {% for product in collections[all_bolsos].products %}
-      <div
-        class="background-list_productspipe"
-      >
+      <div  key="{{product.id}}"
+        class="background-list_productspipe" >
         <span>{{ product.title }}</span>
+        <span id="changediverprice-{{product.id}}">${{ product.price }}</span>
+        <div
+        class="total-variants" id="allvariants">
+        {% for color in product.variants %}
+         
+            <input key="{{color.id}}"
+              type="ratio"
+              id="{{color.id}}"
+              data-price={{color.price}}
+             data-identificador="{{product.id}}"
+              data-single-option-selector
+           
+              onclick="window_loc({{color.id}})"
+             class="total-variant{% if color.title =='Violeta' %} total-variant-violeta {% elsif  color.title == 'Gris' %} total-variant-gris {% elsif  color.title == 'Menta' %} total-variant-menta {% elsif  color.title == 'Cafe' %} total-variant-cafe {% elsif  color.title == 'Azul' %} total-variant-azul {% elsif  color.title == 'Negro' %} total-variant-negro {% elsif  color.title == 'Rojo' %} total-variant-rojo {% elsif  color.title == 'Verde' %} total-variant-verde  {% elsif  color.title == 'Lila' %} total-variant-lila {% else %} total-variant-white {% endif %}"></input>
+          {% endfor %}
+        </div>
         <img
           src="{{ product.featured_image | image_url: width: 400, height: 400 }}"
-          width="476"
-        >
+          width="476">
         <button
-          class="button-color"
-        >
+          class="button-color">
           Agregar al carrito
         </button>
       </div>
@@ -46,63 +60,66 @@
 </div>
 
 {% schema %}
-{
-  "name": "nuevapropuesta",
-  "class": "section",
-  "settings": [  {
-      "type": "collection",
-      "id": "collection",
-      "label": "t:sections.featured-collection.settings.collection.label"
-    }, {
-    "type": "range",
-    "id": "products_per_page",
-    "min": 4,
-    "max": 16,
-    "step": 4,
-    "default": 16,
-    "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
-  },
-    {
-      "type": "paragraph",
-      "content": "t:sections.main-collection-banner.settings.paragraph.content"
-    }, {
-      "type": "checkbox",
-      "id": "show_collection_description",
-      "default": true,
-      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
-    }, {
-      "type": "checkbox",
-      "id": "show_collection_image",
-      "default": false,
-      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
-      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
-    }, {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
-        }, {
-          "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.all.colors.label"
-    }
-  ]
-}
+  {
+    "name": "nuevapropuesta",
+    "class": "section",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "t:sections.featured-collection.settings.collection.label"
+      },
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "min": 4,
+        "max": 16,
+        "step": 4,
+        "default": 16,
+        "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:sections.main-collection-banner.settings.paragraph.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_description",
+        "default": true,
+        "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+      }, {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "default": false,
+        "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+        "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+      }, {
+        "type": "select",
+        "id": "color_scheme",
+        "options": [
+          {
+            "value": "accent-1",
+            "label": "t:sections.all.colors.accent_1.label"
+          },
+          {
+            "value": "accent-2",
+            "label": "t:sections.all.colors.accent_2.label"
+          },
+          {
+            "value": "background-1",
+            "label": "t:sections.all.colors.background_1.label"
+          },
+          {
+            "value": "background-2",
+            "label": "t:sections.all.colors.background_2.label"
+          }, {
+            "value": "inverse",
+            "label": "t:sections.all.colors.inverse.label"
+          }
+        ],
+        "default": "background-1",
+        "label": "t:sections.all.colors.label"
+      }
+    ]
+  }
 {% endschema %}
