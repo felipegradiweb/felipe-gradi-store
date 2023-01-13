@@ -13,7 +13,7 @@
   }
 {%- endstyle -%}
 {%- liquid
-  assign products_all = section.settings.collection.products
+  assign products_all = section.settings.collection.all_products_count
 -%}
 {{ products_all | json }}
 <div
