@@ -13,7 +13,10 @@
   }
 {%- endstyle -%}
 {%- liquid
-  assign all_bichos = section.settings.collection.products
+  assign all_bichos = collections.all.products
+  if section.settings.collection.all_products_count
+    assign all_bichos = section.settings.collection.products
+  endif
 -%}
 <div
   class="all-products"
@@ -21,7 +24,7 @@
   {{ all_bichos | json }}
   <span>diferenciaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
   {{ collections.all.products | json }}
-  {%- paginate all_bichos by section.settings.products_per_page -%}
+  {%- paginate section.settings.collection by section.settings.products_per_page -%}
     {% for product in all_bichos %}
       <div
         class="background-list_productspipe"
