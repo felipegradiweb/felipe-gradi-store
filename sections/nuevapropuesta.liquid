@@ -22,12 +22,12 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
 -%}
 {{ section.settings.collection.title | json }}
 <div
-  class="all-products">
+  class="all-products" id="totalpro">
   {%- paginate collections[all_bolsos].products by section.settings.products_per_page -%}
     {% for product in collections[all_bolsos].products %}
       <div  key="{{product.id}}"
         class="background-list_productspipe" >
-        <span>{{ product.title }}</span>
+        <span>{{ product.title | upcase }}</span>
         <span id="changediverprice-{{product.id}}">${{ product.price }}</span>
         <div
         class="total-variants" id="allvariants">
@@ -38,14 +38,19 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
               id="{{color.id}}"
               data-price={{color.price}}
              data-identificador="{{product.id}}"
+             data-picture="{{color.featured_image | image_url: width: 400, height: 400}}"
               data-single-option-selector
            
               onclick="window_loc({{color.id}})"
              class="total-variant{% if color.title =='Violeta' %} total-variant-violeta {% elsif  color.title == 'Gris' %} total-variant-gris {% elsif  color.title == 'Menta' %} total-variant-menta {% elsif  color.title == 'Cafe' %} total-variant-cafe {% elsif  color.title == 'Azul' %} total-variant-azul {% elsif  color.title == 'Negro' %} total-variant-negro {% elsif  color.title == 'Rojo' %} total-variant-rojo {% elsif  color.title == 'Verde' %} total-variant-verde  {% elsif  color.title == 'Lila' %} total-variant-lila {% else %} total-variant-white {% endif %}"></input>
           {% endfor %}
         </div>
-        <img
+       
+        <img id="changepicture-{{product.id}}"
           src="{{ product.featured_image | image_url: width: 400, height: 400 }}"
+          width="476">
+          <img class="desaparecerimagen" id="changepicturehidden-{{product.id}}"
+          src="{{ product.variants[1].featured_image | image_url: width: 400, height: 400 }}"
           width="476">
         <button
           class="button-color">
