@@ -1,5 +1,6 @@
-{% comment %}theme-check-disable ImgLazyLoading
-class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
+{% comment %}
+  theme-check-disable ImgLazyLoading
+  class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
 {% endcomment %}
 
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
@@ -13,69 +14,72 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
 {%- endstyle -%}
 
 <div
-  class="all-products">
-  {% for product in collections['all'].products %}
+  class="all-products"
+>
+  {% for product in collections.all.products %}
     <div
-      class="background-list_productspipe">
-
+      class="background-list_productspipe"
+    >
       <span>{{ product.title }}</span>
       <img
         src="{{ product.featured_image | image_url: width: 400, height: 400 }}"
-
-
-        width="476">
+        width="476"
+      >
       <button
-        class="button-color">Agregar al carrito</button>
+        class="button-color"
+      >
+        Agregar al carrito
+      </button>
     </div>
   {% endfor %}
 </div>
 
 {% schema %}
-  {
-    "name": "nuevapropuesta",
-    "class": "section",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "t:sections.main-collection-banner.settings.paragraph.content"
-      }, {
-        "type": "checkbox",
-        "id": "show_collection_description",
-        "default": true,
-        "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
-      }, {
-        "type": "checkbox",
-        "id": "show_collection_image",
-        "default": false,
-        "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
-        "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
-      }, {
-        "type": "select",
-        "id": "color_scheme",
-        "options": [
-          {
-            "value": "accent-1",
-            "label": "t:sections.all.colors.accent_1.label"
-          },
-          {
-            "value": "accent-2",
-            "label": "t:sections.all.colors.accent_2.label"
-          },
-          {
-            "value": "background-1",
-            "label": "t:sections.all.colors.background_1.label"
-          },
-          {
-            "value": "background-2",
-            "label": "t:sections.all.colors.background_2.label"
-          }, {
-            "value": "inverse",
-            "label": "t:sections.all.colors.inverse.label"
-          }
-        ],
-        "default": "background-1",
-        "label": "t:sections.all.colors.label"
-      }
-    ]
-  }
+{
+  "name": "nuevapropuesta",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    }, {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    }, {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    }, {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        }, {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    }
+  ]
+}
 {% endschema %}
