@@ -21,6 +21,7 @@
 <div
   class="all-products"
 >
+  {{ all_bichos | json }}
   {%- paginate all_bichos by section.settings.products_per_page -%}
     {% for product in all_bichos %}
       <div
