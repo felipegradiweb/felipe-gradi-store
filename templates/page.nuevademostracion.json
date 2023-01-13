@@ -11,7 +11,7 @@
       "type": "nuevapropuesta",
       "settings": {
         "collection": "",
-        "products_per_page": 4,
+        "products_per_page": 8,
         "show_collection_description": true,
         "show_collection_image": false,
         "color_scheme": "background-1"
