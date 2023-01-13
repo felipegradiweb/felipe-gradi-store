@@ -10,7 +10,7 @@
     "nuevapropuesta": {
       "type": "nuevapropuesta",
       "settings": {
-        "collection": "",
+        "collection": "frontpage",
         "products_per_page": 4,
         "show_collection_description": true,
         "show_collection_image": false,
