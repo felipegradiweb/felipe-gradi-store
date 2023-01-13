@@ -17,6 +17,10 @@
   if section.settings.collection.all_products_count
     assign all_bolsos = section.settings.collection.products
   endif
+
+  if section.settings.collection.all_products_count == NULL
+    assign all_bolsos = collections.all.products
+  endif
 -%}
 <div
   class="all-products"
