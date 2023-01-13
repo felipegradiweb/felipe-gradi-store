@@ -12,7 +12,10 @@
     }
   }
 {%- endstyle -%}
-
+{%- liquid
+  assign products_to_display = section.settings.collection
+-%}
+{{ products_to_display | json }}
 <div
   class="all-products"
 >
