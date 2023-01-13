@@ -16,8 +16,7 @@
 <div
   class="all-products"
 >
-  {%- paginate products_all by section.settings.products_per_page -%}
-    {{ products_all | json }}
+  {%- paginate collections.all.products by section.settings.products_per_page -%}
     {% for product in collections.all.products %}
       <div
         class="background-list_productspipe"
