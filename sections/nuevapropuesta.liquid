@@ -14,14 +14,14 @@
 {%- endstyle -%}
 {%- liquid
   assign all_bolsos = collections.all.products
-  if section.settings.collection.all_products_count
+  if section.settings.collection.all_products_count and section.settings.collection.all_products_count > 0
     assign all_bolsos = section.settings.collection.products
   endif
 -%}
 <div
   class="all-products"
 >
-  {%- paginate all_bolsos by section.settings.products_per_page -%}
+  {%- paginate collections.all.products by section.settings.products_per_page -%}
     {% for product in all_bolsos %}
       <div
         class="background-list_productspipe"
