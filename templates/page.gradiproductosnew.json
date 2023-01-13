@@ -1,0 +1,17 @@
+{
+    "sections": {
+      "bannerfelipe": {
+        "type": "bannerfelipe",
+        "settings": {
+          "show_collection_description": true,
+          "show_collection_image": false,
+          "color_scheme": "background-1"
+        }
+      }
+  
+    },
+    "order": [
+      "bannerfelipe",
+     
+    ]
+  }
