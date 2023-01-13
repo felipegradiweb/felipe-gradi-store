@@ -22,9 +22,7 @@
   class="all-products"
 >
   {{ all_bichos | json }}
-  {% comment %}
-    segunda etiqueta
-  {% endcomment %}
+  <span>diferenciaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
   {{ collections.all.products | json }}
   {%- paginate all_bichos by section.settings.products_per_page -%}
     {% for product in all_bichos %}
