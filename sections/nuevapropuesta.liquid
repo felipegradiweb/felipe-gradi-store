@@ -13,7 +13,6 @@
   }
 {%- endstyle -%}
 
-{{ products_all | json }}
 <div
   class="all-products"
 >
@@ -24,6 +23,7 @@
     endif
   -%}
   {%- paginate products_all by section.settings.products_per_page -%}
+    {{ products_all | json }}
     {% for product in products_all %}
       <div
         class="background-list_productspipe"
