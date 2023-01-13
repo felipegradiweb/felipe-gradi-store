@@ -1,7 +1,10 @@
-{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
-{% comment %}
-  {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+{% comment %}theme-check-disable ImgLazyLoading
+  class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
 
+{% endcomment %}
+
+  {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+  {{ 'nuevapropuesta.css' | asset_url | stylesheet_tag }}
   {%- style -%}
   @media screen and (max-width: 749px) {
   .collection-hero--with-image .collection-hero__inner {
@@ -10,9 +13,7 @@
   }
   {%- endstyle -%}
 {% endcomment %}
-<div
-  class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
->
+<div class="background-list-products">
   HOLAAAAAAAAAAAAAAAA
 </div>
 
