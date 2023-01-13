@@ -13,11 +13,7 @@
   }
 {%- endstyle -%}
 {%- liquid
-  assign products_all = collections.all.products
-
-  if section.settings.collection != null
-    assign products_all = section.settings.collection.products
-  endif
+  assign products_all = section.settings.collection.products
 -%}
 {{ products_all | json }}
 <div
