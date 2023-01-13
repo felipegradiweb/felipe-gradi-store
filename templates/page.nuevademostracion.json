@@ -7,7 +7,7 @@
         "padding_bottom": 36
       }
     },
-    "bannerfelipe": {
+    "nuevapropuesta": {
       "type": "nuevapropuesta",
       "settings": {
         "color_scheme": "background-1"
@@ -16,6 +16,6 @@
   },
   "order": [
     "main",
-    "bannerfelipe"
+    "nuevapropuesta"
   ]
 }
