@@ -1,3 +1,18 @@
 .background-list_productspipe{
-    background-color:red
+   
+    display:flex;
+    flex-direction:column;
+    border:1px solid gray;
+    text-align:center
+}
+.all-products{
+    display:flex;
+    justify-content: center;
+    
+    flex-wrap: wrap;
+    
+}
+.button-color{
+    background:black;
+    color:white
 }

@@ -13,8 +13,22 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
 {%- endstyle -%}
 
 <div
-  class="background-list_productspipe">
-  HOLAAAAAAAAAAAAAAAA
+  class="all-products">
+  {%- paginate collections['all'].products by section.settings.products_per_page -%}
+  {% for product in collections['all'].products %}
+    <div
+      class="background-list_productspipe">
+
+      <span>{{ product.title }}</span>
+      <img
+        src="{{ product.featured_image | image_url: width: 400, height: 400 }}"
+
+
+        width="476">
+      <button
+        class="button-color">Agregar al carrito</button>
+    </div>
+  {% endfor %}
 </div>
 
 {% schema %}
@@ -25,44 +39,16 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
       {
         "type": "paragraph",
         "content": "t:sections.main-collection-banner.settings.paragraph.content"
-      }, {
-        "type": "checkbox",
-        "id": "show_collection_description",
-        "default": true,
-        "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
-      }, {
-        "type": "checkbox",
-        "id": "show_collection_image",
-        "default": false,
-        "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
-        "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
-      }, {
-        "type": "select",
-        "id": "color_scheme",
-        "options": [
-          {
-            "value": "accent-1",
-            "label": "t:sections.all.colors.accent_1.label"
-          },
-          {
-            "value": "accent-2",
-            "label": "t:sections.all.colors.accent_2.label"
-          },
-          {
-            "value": "background-1",
-            "label": "t:sections.all.colors.background_1.label"
-          },
-          {
-            "value": "background-2",
-            "label": "t:sections.all.colors.background_2.label"
-          }, {
-            "value": "inverse",
-            "label": "t:sections.all.colors.inverse.label"
-          }
-        ],
-        "default": "background-1",
-        "label": "t:sections.all.colors.label"
-      }
+      },
+{
+        "type": "range",
+      "id": "products_per_page",
+      "min": 2,
+      "max": 18,
+      "step": 4,
+      "default": 16,
+      "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+    }
     ]
   }
 {% endschema %}
