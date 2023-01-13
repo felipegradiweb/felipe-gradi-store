@@ -16,7 +16,7 @@
 <div
   class="all-products"
 >
-  {%- assign products_all = collections.all.products -%}
+  {% assign products_all = collections.all.products %}
   {%- paginate products_all by section.settings.products_per_page -%}
     {{ products_all | json }}
     {% for product in products_all %}
