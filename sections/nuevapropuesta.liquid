@@ -13,10 +13,7 @@
   }
 {%- endstyle -%}
 {%- liquid
-  assign all_bichos = collections.all.products
-  if section.settings.collection.all_products_count
-    assign all_bichos = section.settings.collection.products
-  endif
+  assign all_bichos = section.settings.collection.products
 -%}
 <div
   class="all-products"
