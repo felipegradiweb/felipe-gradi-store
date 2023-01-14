@@ -20,7 +20,7 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
     assign all_bolsos = section.settings.collection.title
   endif
 -%}
-{{ section.settings.collection.title | json }}
+
 <div
   class="all-products" id="totalpro">
   {%- paginate collections[all_bolsos].products by section.settings.products_per_page -%}
@@ -38,7 +38,7 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
               id="{{color.id}}"
               data-price={{color.price}}
              data-identificador="{{product.id}}"
-             data-picture="{{color.featured_image | image_url: width: 400, height: 400}}"
+             data-picture="{{color.featured_image | image_url: width: 200, height: 200}}"
               data-single-option-selector
            
               onclick="window_loc({{color.id}})"
@@ -47,11 +47,11 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
         </div>
        
         <img id="changepicture-{{product.id}}"
-          src="{{ product.featured_image | image_url: width: 400, height: 400 }}"
-          width="476">
+          src="{{ product.featured_image | image_url: width: 200, height: 200 }}"
+          >
           <img class="desaparecerimagen" id="changepicturehidden-{{product.id}}"
-          src="{{ product.variants[1].featured_image | image_url: width: 400, height: 400 }}"
-          width="476">
+          src="{{ product.variants[1].featured_image | image_url: width: 200, height: 200 }}"
+          >
         <button
           class="button-color">
           Agregar al carrito

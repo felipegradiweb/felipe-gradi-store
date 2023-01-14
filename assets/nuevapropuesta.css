@@ -23,34 +23,45 @@
     margin-bottom:5px
 }
 .total-variant-violeta{
-background:#8F00FF
+background:#8F00FF;
+color:#8F00FF
 }
 .total-variant-menta{
-background:#497e76 
+background:#497e76 ;
+color:#497e76
 }
 .total-variant-azul{
-background:blue 
+background:blue ;
+color:blue 
 }
 .total-variant-cafe{
-background:#6F4E37
+background:#6F4E37;
+color:#6F4E37
 }
 .total-variant-white{
-background:#ffff
+background:#ffff;
+color:#ffff
 }
 .total-variant-gris{
-background:gray 
+background:gray ;
+color:gray 
 }
 .total-variant-rojo{
-background:red 
+background:red ;
+color:red 
 }
 .total-variant-negro{
-background:black 
+background:black ;
+color:black 
 }
 .total-variant-lila{
-background:#C8A2C8
+background:#C8A2C8;
+color:#C8A2C8
 }
 .total-variant-verde{
-background:green 
+background:green;
+color:green;
+
 }
 .total-variant{
    border-radius:30px;
