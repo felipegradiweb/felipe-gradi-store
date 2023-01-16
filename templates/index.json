@@ -6,7 +6,11 @@
         "heading": {
           "type": "heading",
           "settings": {
+<<<<<<< HEAD
             "heading": "Image bannedthtsr",
+=======
+            "heading": "Bags",
+>>>>>>> main
             "heading_size": "h0"
           }
         },
@@ -20,8 +24,13 @@
         "button": {
           "type": "buttons",
           "settings": {
+<<<<<<< HEAD
             "button_label_1": "Shop ererereall",
             "button_link_1": "shopify:\/\/collections\/all",
+=======
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify:\/\/pages\/productos-gradiweb",
+>>>>>>> main
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -36,6 +45,7 @@
       ],
       "settings": {
         "image": "{{ shop.brand.cover_image }}",
+        "image_2": "shopify:\/\/shop_images\/man-holding-a-leather-bag-on-a-set-of-stairs.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "adapt_height_first_image": false,
@@ -111,20 +121,20 @@
         "collection-0": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "frontpage"
           }
         },
         "product": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "bolso-children",
             "second_image": false
           }
         },
         "collection-1": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "billeteras"
           }
         }
       },
@@ -149,7 +159,8 @@
       "settings": {
         "heading": "",
         "heading_size": "h1",
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify:\/\/shop_images\/slick-summer-men-s-fashion.jpg",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=KnvH4Pu0bUw",
         "description": "",
         "full_width": false,
         "color_scheme": "background-1",
@@ -209,6 +220,60 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "bf578620-3da2-42e2-9b30-38e16766af7a": {
+      "type": "slideshow",
+      "blocks": {
+        "template--17543451345172__bf578620-3da2-42e2-9b30-38e16766af7a-16734747586a477053-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/black-bag-over-the-shoulder.jpg",
+            "heading": "Muy casual",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "template--17543451345172__bf578620-3da2-42e2-9b30-38e16766af7a-16734747586a477053-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/stylish-skirt-purse.jpg",
+            "heading": "Muy elegante",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--17543451345172__bf578620-3da2-42e2-9b30-38e16766af7a-16734747586a477053-0",
+        "template--17543451345172__bf578620-3da2-42e2-9b30-38e16766af7a-16734747586a477053-1"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
     }
   },
   "order": [
@@ -217,6 +282,7 @@
     "featured_collection",
     "collage",
     "video",
-    "multicolumn"
+    "multicolumn",
+    "bf578620-3da2-42e2-9b30-38e16766af7a"
   ]
 }

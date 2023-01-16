@@ -1315,6 +1315,9 @@
         }
       }
     },
+    "productsgrid": {
+      "name": "Productgrid"
+    },
     "main-collection-product-grid": {
       "name": "Grille de produit",
       "settings": {

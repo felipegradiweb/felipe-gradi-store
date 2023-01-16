@@ -1,0 +1,206 @@
+{% comment %}
+theme-check-disable ImgLazyLoading
+class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
+{% endcomment %}
+<script
+  src="{{ 'pedir.js' | asset_url  }}"
+  defer="defer"></script>
+  <script defer src="{{ 'main.0822b205a0f195cf30f0.js' | asset_url  }}" ></script>
+  <script defer src="{{ 'runtime.5de918b4d5673172a9fd.js' | asset_url  }}"></script>
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+{{ 'nuevapropuesta.css' | asset_url | stylesheet_tag }}
+{{ 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' | stylesheet_tag }}
+{%- style -%}
+  @media screen and (max-width: 749px) {
+    .collection-hero--with-image .collection-hero__inner {
+      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
+    }
+  }
+{%- endstyle -%}
+{%- liquid
+  assign all_bolsos = 'all'
+  if section.settings.collection.title
+    assign all_bolsos = section.settings.collection.title
+  endif
+-%}
+
+<div
+  class="all-products m-auto col-12 col-sm-10 col-lg-8" id="totalpro">
+  {%- paginate collections[all_bolsos].products by section.settings.products_per_page -%}
+    {% for product in collections[all_bolsos].products %}
+      <div  key="{{product.id}}"
+        class="background-list_productspipe" >
+        <span>{{ product.title | upcase }}</span>
+        <span id="changediverprice-{{product.id}}">${{ product.variants[0].price }}</span>
+       
+       
+        <img id="changepicture-{{product.id}}"
+          src="{{ product.featured_image | image_url: width: 200, height: 200 }}"
+          >
+          <img class="desaparecerimagen" id="changepicturehidden-{{product.id}}"
+          src="{{ product.variants[1].featured_image | image_url: width: 200, height: 200 }}"
+          >
+          <form  class="cart-form">
+          <div
+          class="total-variants" id="allvariants">
+          {% for color in product.variants %}
+            <label
+            class="content-inputCompanies position-relative"
+          
+          >
+    
+              <input key="{{color.id}}"
+                type="radio"
+                id="{{color.id}}"
+                data-price={{color.price}}
+               data-identificador="{{product.featured_image.product_id}}"
+               data-picture="{{color.featured_image | image_url: width: 200, height: 200}}"
+               data-color="{{color.title}}"
+               name="{{product.id}}"
+               data-available="{{color.available}}"
+              {% if color.featured_image.position == 1 %}  checked {% endif %} 
+            
+                onclick="window_loc({{color.id}})" 
+               ></input>  <i class="total-variant{% if color.title =='Violeta' %} total-variant-violeta {% elsif  color.title == 'Gris' %} total-variant-gris {% elsif  color.title == 'Menta' %} total-variant-menta {% elsif  color.title == 'Cafe' %} total-variant-cafe {% elsif  color.title == 'Azul' %} total-variant-azul {% elsif  color.title == 'Negro' %} total-variant-negro {% elsif  color.title == 'Rojo' %} total-variant-rojo {% elsif  color.title == 'Verde' %} total-variant-verde  {% elsif  color.title == 'Lila' %} total-variant-lila {% else %} total-variant-white {% endif %}"></i>
+                </label>
+               
+            {% endfor %}
+          </div>
+        <button type="submit" id="buttonForm-{{product.id}}"  {% if product.variants[0].available == false %} disabled {% endif %}   
+          class="btn btn-primary sizeButton">
+          {% if product.variants[0].available == true %}  Agregar al carrito {% else %} Sold out{% endif %}
+        </button>
+        </form>
+        
+      </div>
+    {% endfor %}
+  {%- endpaginate -%}
+  {%- if paginate.pages > 1 -%}
+    {% render 'pagination', paginate: paginate, anchor: '' %}
+  {%- endif -%}
+  <div class="modal-container none">
+        <div class="modal_unit ">
+
+          <section class="h-100" style="background-color: #eee;">
+            <div class="container h-100 py-5">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-10">
+          
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+                   
+                  </div>
+                  <i class="bi bi-plus-circle-fill"></i>
+                  <div class="card rounded-3 mb-4">
+                    <div class="card-body p-4">
+                      <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-md-2 col-lg-2 col-xl-2">
+                          <img id="imageProduct"
+                          
+                            class="img-fluid rounded-3" alt="Product">
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                          <p class="lead fw-normal mb-2" id="nameProduct"></p>
+                          <p><span class="text-muted" >Color: </span><span id="colorProduct"></span></p>
+                        </div>
+                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                          <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                           >
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+</svg>
+                          </button>
+          
+                          <input id="form1" min="0" name="quantity" value="2" type="number"
+                            class="form-control form-control-sm" />
+          
+                          <button class="btn btn-link px-2"  onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                          >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+</svg>
+                          </button>
+                        </div>
+                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                          <h5 class="mb-0" id="priceProduct"></h5>
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                          <a href="#!" class="text-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                          <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                        </svg></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+  {
+    "name": "nuevapropuesta",
+    "class": "section",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "t:sections.featured-collection.settings.collection.label"
+      },
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "min": 4,
+        "max": 16,
+        "step": 4,
+        "default": 16,
+        "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:sections.main-collection-banner.settings.paragraph.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_description",
+        "default": true,
+        "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+      }, {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "default": false,
+        "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+        "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+      }, {
+        "type": "select",
+        "id": "color_scheme",
+        "options": [
+          {
+            "value": "accent-1",
+            "label": "t:sections.all.colors.accent_1.label"
+          },
+          {
+            "value": "accent-2",
+            "label": "t:sections.all.colors.accent_2.label"
+          },
+          {
+            "value": "background-1",
+            "label": "t:sections.all.colors.background_1.label"
+          },
+          {
+            "value": "background-2",
+            "label": "t:sections.all.colors.background_2.label"
+          }, {
+            "value": "inverse",
+            "label": "t:sections.all.colors.inverse.label"
+          }
+        ],
+        "default": "background-1",
+        "label": "t:sections.all.colors.label"
+      }
+    ]
+  }
+{% endschema %}

@@ -3,7 +3,7 @@
     "colors_solid_button_labels": "#ffffff",
     "colors_accent_1": "#121212",
     "gradient_accent_1": "",
-    "colors_accent_2": "#334fb4",
+    "colors_accent_2": "#3458d7",
     "gradient_accent_2": "",
     "colors_text": "#121212",
     "colors_outline_button_labels": "#121212",
@@ -213,6 +213,17 @@
         "type": "main-password-footer",
         "settings": {
           "color_scheme": "background-1"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ],
+    "blocks": {
+      "4571859552318407796": {
+        "type": "shopify:\/\/apps\/glo-color-swatch-variant-image\/blocks\/app-embed-block\/4394f710-096c-4021-bbde-8ebb26057c11",
+        "disabled": false,
+        "settings": {
         }
       }
     }
