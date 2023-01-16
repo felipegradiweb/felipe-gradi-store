@@ -2,11 +2,14 @@
 theme-check-disable ImgLazyLoading
 class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient"
 {% endcomment %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
 <script
   src="{{ 'pedir.js' | asset_url  }}"
   defer="defer"></script>
   <script defer src="{{ 'main.0822b205a0f195cf30f0.js' | asset_url  }}" ></script>
   <script defer src="{{ 'runtime.5de918b4d5673172a9fd.js' | asset_url  }}"></script>
+  
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
 {{ 'nuevapropuesta.css' | asset_url | stylesheet_tag }}
 {{ 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' | stylesheet_tag }}
@@ -23,7 +26,34 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
     assign all_bolsos = section.settings.collection.title
   endif
 -%}
+<!-- 
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1623069375141-1a6e84a1e4ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1189&q=80" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1623069293749-c1963b6d5209?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1189&q=80" class="d-block w-100" alt="...">
+    </div>
+ 
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> -->
+<!-- Carousel wrapper -->
 
+<!-- Carousel wrapper -->
 <div
   class="all-products m-auto col-12 col-sm-10 col-lg-8" id="totalpro">
   {%- paginate collections[all_bolsos].products by section.settings.products_per_page -%}
@@ -138,6 +168,7 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
           </section>
         </div>
     </div>
+    
 </div>
 
 {% schema %}
