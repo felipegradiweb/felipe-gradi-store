@@ -1,0 +1,23 @@
+{%- liquid
+  assign all_cards = 'all'
+
+-%}
+<script defer src="{{ 'script.js' | asset_url  }}"></script>
+<div style="width:100%;display:flex">
+  <div style="width:80%">
+    <ul
+      id="product-gridWhislist"
+      data-id="{{ section.id }}"
+      style="display:flex;justify-content: center; flex-wrap: wrap">
+      {%- for product in collections[all_cards].products -%}
+        <div>
+          {% render 'card-whislist', card_product: product %}
+        </div>
+      {% endfor %}
+    </ul>
+  </div>
+  <div style="width:20%">
+    <button id="gotoFavorite">Ir a mi lista de deseos</button>
+  </div>
+
+</div>

@@ -1,0 +1,85 @@
+{% comment %}
+Renders a product card
+Accepts:
+- card_product: {Object} Product Liquid object (optional)
+- media_aspect_ratio: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
+- show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+- show_vendor: {Boolean} Show the product vendor. Default: false
+- show_rating: {Boolean} Show the product rating. Default: false
+- extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
+- lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+- show_quick_add: {Boolean} Show the quick add button.
+- section_id: {String} The ID of the section that contains this card.
+- horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false
+Usage:
+{% render 'card-product', show_vendor: section.settings.show_vendor %}
+{% endcomment %}
+
+
+
+{%- if card_product and card_product != empty -%}
+
+  <div style="width:100%">
+
+    <div style="width:80%;display:flex;justify-content:center;flex-direction:column; margin:auto">
+      <div><img src="{{ card_product.media[1] | image_url:width: 200, height: 200}}"></div>
+      <div class="card__content" style="margin: auto">
+        <div class="card__information">
+          <h3 class="card__heading" {% if card_product.featured_media == nil and settings.card_style == 'standard' %}id="title-{{ section_id }}-{{ card_product.id }}"{% endif %}>
+            <a
+              href="{{ card_product.url }}"
+              id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
+              class="full-unstyled-link"
+              aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}">
+              {{ card_product.title | escape }}
+            </a>
+          </h3>
+        </div>
+      </div>
+      <div style="margin: auto;font-size:1.2rem">
+        ${{ card_product.price | escape }}
+      </div>
+      <div style="margin: auto">
+        {% for i in (1..5) -%}
+          {% if i == 5 %}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="purple"
+              class="bi bi-star"
+              viewBox="0 0 16 16">
+              <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+            </svg>
+          {% else %}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="purple"
+              class="bi bi-star-fill"
+              viewBox="0 0 16 16">
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
+            </svg>
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+      <button class="buton_prueba" style="padding:1rem;background:#3EB489;border:1px solid #3EB489;color:white;margin:1rem auto">Add to cart</button>
+      <button style="padding:1rem;background:#3EB489;border:1px solid #3EB489;color:white;margin:1rem auto">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-heart-fill"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z">
+        </svg>
+        <span style="margin:auto 0.5rem">Add to whislist</span>
+      </button>
+    </div>
+
+  </div>
+{%- endif -%}

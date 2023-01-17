@@ -1,0 +1,13 @@
+{
+  "sections": {
+   "whislistTest": {
+      "type": "whislistTest",
+      "settings": {
+        "color_scheme": "background-1"
+      }
+    }
+  },
+  "order": [
+  "whislistTest"
+  ]
+}
