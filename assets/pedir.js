@@ -1,4 +1,14 @@
+
+
 const responseModal = document.querySelector(".modal-container");
+const sectionfull = document.getElementById('allCartProducts')
+const sectionempty = document.getElementById('basketProductsEmpty')
+const totalCart = document.querySelector('.modal_unit')
+const storageProductDiv = document.getElementById('storageProduct')
+
+
+
+
 function window_loc(id){
      var vaariantes=document.getElementById(id)
     if(vaariantes){ 
@@ -79,45 +89,175 @@ for (let i=0 ; i<childrens.length;i++){
 
   
 }
+function changeallproducts(collectionref,item){
+  console.log(collectionref[0])
+  let collectionfactory =collectionref[0].children[0].children[2].children[0].children[0]
+  collectionfactory.children[3].children[0].innerHTML='$' + item.final_line_price
+  collectionfactory.children[2].children[1].value=item.quantity
+  collectionfactory.children[2].children[1].id='input' + item.variant_id
+  collectionfactory.children[0].children[0].src=item.image
+  collectionfactory.children[1].children[1].children[1].innerHTML=item.variant_title
+  collectionfactory.children[1].children[0].innerHTML=item.product_title
+  collectionfactory.children[4].children[0].value=item.variant_id
+}
+async function changeProductCarrito(variant_id,cantidad){ 
+  let data = {
+      'id': variant_id,
+      'quantity': cantidad
+  };
+   await fetch('/cart/change.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })  .then((res) => res.json())
+  .then(response => {
+   
+   
+    
+      fetch('/cart/update.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })  .then((res) => res.json())
+      .then(response => {
+        while (storageProductDiv.hasChildNodes()) {
+          storageProductDiv.removeChild(storageProductDiv.firstChild);
+        }
+        let item_count =response.item_count;
+        if(item_count > 0){let items=   response.items
+          for (let i=0 ; i<items.length;i++){
+         
+            var clone = sectionfull.cloneNode(true);
+         clone.classList.remove('none')
+      
+         clone.id= 'misproductos-' + i;
+      
+      
+      
+            var children = clone.childNodes;
+            for (let index=children.length - 1; index>=0;index--){
+            // for (var index = 0; index < children.length; index++) {
+              let collectionref=children[index].children
+              if(collectionref){
+                var buttonProd = document.querySelector('.button-delete')
+                buttonProd.value=items[i].variant_id
+            changeallproducts(collectionref,items[i])
+              }
+            }
+            
+            storageProductDiv.appendChild(clone)
+      
+            console.log(items[i])  
+          }
+           
+          responseModal.classList.remove('none') }else{
+     
+          if(sectionfull || sectionempty){
+           
+            sectionfull.classList.add('none')
+            sectionempty.classList.remove('none')
+          }
+    
+        }
+        
+      })
+      .catch((error) => {
+        
+        console.log('Error:', error);
+      });
+   
+
+   
+      // responseModal.classList.remove('none')
+
+  })
+  .catch((error) => {
+    
+    console.log('Error:', error);
+  });
+  
+}
 
 async function agregarProductoAlCarrito(variant_id,color){ 
-    let data = {
-      'items':[{
-        'id': variant_id,
-        'quantity': 1,'Color':color
-      }]
-    };
-  
-    await fetch('/cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })  .then((res) => res.json())
-    .then(response => {
-      let items=   response.items
-      for (let i=0 ; i<items.length;i++){
-        var nameProd = document.getElementById('nameProduct')
-        var colorProd = document.getElementById('colorProduct')
-        var priceProd = document.getElementById('priceProduct')
-        var imageProd = document.getElementById('imageProduct')
-        if(nameProd || colorProd || priceProd){
 
-            nameProd.innerHTML =items[i].product_title;
-            colorProd.innerHTML =items[i].variant_title;
-            priceProd.innerHTML = '$' + items[i].price;
-            imageProd.src = items[i].image;
+console.log(sectionfull.childNodes)
+
+  let data1 = {
+    'items':[{
+      'id': variant_id,
+      'quantity': 1,'Color':color
+    }]
+  };
+
+  await fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data1)
+  })  .then((res) => res.json())
+  .then(response => {
+  })
+  .catch((error) => {
+    console.log('Error:', error);
+  });
+
+  let data = {
+    'items':[{
+      'id': variant_id
+     
+    }]
+  };
+
+  await fetch('/cart/update.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })  .then((res) => res.json())
+  .then(response => {
+    while (storageProductDiv.hasChildNodes()) {
+      storageProductDiv.removeChild(storageProductDiv.firstChild);
+    }
+
+    let items=   response.items
+    for (let i=0 ; i<items.length;i++){
+   
+      var clone = sectionfull.cloneNode(true);
+   clone.classList.remove('none')
+
+   clone.id= 'misproductos-' + i;
+
+
+
+      var children = clone.childNodes;
+      for (let index=children.length - 1; index>=0;index--){
+      // for (var index = 0; index < children.length; index++) {
+        let collectionref=children[index].children
+        if(collectionref){
+          changeallproducts(collectionref,items[i])
+    
         }
-        console.log(items[i])  
       }
-        responseModal.classList.remove('none')
-
-    })
-    .catch((error) => {
       
-      console.log('Error:', error);
-    });
+      storageProductDiv.appendChild(clone)
+
+      console.log(items[i])  
+    }
+     
+    responseModal.classList.remove('none')
+  })
+  .catch((error) => {
+    
+    console.log('Error:', error);
+  });
+
+    
   }
 document.addEventListener("submit", (event) => {
     var childrens=event.target
@@ -129,7 +269,6 @@ if(id || color){
    
      agregarProductoAlCarrito(id,color)
 }
-   
 }
 }
     event.preventDefault();
@@ -140,3 +279,47 @@ button_close &&button_close.addEventListener("click", (e) => {
     responseModal.classList.add("none");
     e.preventDefault();
   });
+  const button_comprando = document.getElementById("continuaComprando");
+
+  button_comprando &&button_comprando.addEventListener("click", (e) => {
+    responseModal.classList.add("none");
+    sectionempty.classList.add('none')
+    e.preventDefault();
+  });
+  function borrarPro(e){
+    console.log(e.value)
+    changeProductCarrito(e.value,0)
+   
+  }
+  function inputchange(e){
+    let cantidad=e.value
+  let identifi=e.id.replace('input','')
+   console.log(identifi,cantidad)
+      changeProductCarrito(identifi,cantidad)
+   
+  }
+ 
+//  function consultarCarrito(){
+//   var respuesta= fetch('/cart.js', {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   })  .then((res) => res.json())
+//   .then(response => {
+//     console.log(response)
+//     if(response){
+
+//       if(response.item_count>0){
+//        return  [true,response.items]
+//       }else {return  [false,response.items]}
+//     }
+   
+
+//   })
+//   .catch((error) => {
+    
+//     console.log('Error:', error);
+//   });
+//   return respuesta
+//  }

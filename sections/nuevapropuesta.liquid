@@ -91,7 +91,7 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
               {% if color.featured_image.position == 1 %}  checked {% endif %} 
             
                 onclick="window_loc({{color.id}})" 
-               ></input>  <i class="total-variant{% if color.title =='Violeta' %} total-variant-violeta {% elsif  color.title == 'Gris' %} total-variant-gris {% elsif  color.title == 'Menta' %} total-variant-menta {% elsif  color.title == 'Cafe' %} total-variant-cafe {% elsif  color.title == 'Azul' %} total-variant-azul {% elsif  color.title == 'Negro' %} total-variant-negro {% elsif  color.title == 'Rojo' %} total-variant-rojo {% elsif  color.title == 'Verde' %} total-variant-verde  {% elsif  color.title == 'Lila' %} total-variant-lila {% else %} total-variant-white {% endif %}"></i>
+               ></input>  <i class="total-variant{% if color.title =='Violeta' %} total-variant-violeta {% elsif  color.title == 'Gris' %} total-variant-gris {% elsif  color.title == 'Menta' %} total-variant-menta {% elsif  color.title == 'Cafe' %} total-variant-cafe {% elsif  color.title == 'Azul' %} total-variant-azul {% elsif  color.title == 'Negro' %} total-variant-negro {% elsif  color.title == 'Rojo' %} total-variant-rojo {% elsif  color.title == 'Verde' %} total-variant-verde  {% elsif  color.title == 'Salmón' %} total-variant-salmon  {% elsif  color.title == 'Lila' %} total-variant-lila {% else %} total-variant-white {% endif %}"></i>
                 </label>
                
             {% endfor %}
@@ -108,43 +108,40 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
   {%- if paginate.pages > 1 -%}
     {% render 'pagination', paginate: paginate, anchor: '' %}
   {%- endif -%}
-  <div class="modal-container none">
-        <div class="modal_unit ">
-
-          <section class="h-100" style="background-color: #eee;">
+  <div class="modal-container  none" >
+        <div class="modal_unit" style="overflow:auto;height:40rem">
+          <h3 class="fw-normal mb-0 text-black py-4">Shopping Cart</h3>
+          <section id="allCartProducts" class="none"  style="background-color: #eee;">
             <div class="container h-100 py-5">
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-10">
-          
                   <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
-                   
                   </div>
                   <i class="bi bi-plus-circle-fill"></i>
                   <div class="card rounded-3 mb-4">
                     <div class="card-body p-4">
-                      <div class="row d-flex justify-content-between align-items-center">
+                      <div class=" d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
                           <img id="imageProduct"
-                          
+                          style="width: 100px"
                             class="img-fluid rounded-3" alt="Product">
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
-                          <p class="lead fw-normal mb-2" id="nameProduct"></p>
+                          <p class="lead fw-normal mb-2 " name="nameProduct"  id="nameProduct"></p>
                           <p><span class="text-muted" >Color: </span><span id="colorProduct"></span></p>
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                          <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                          <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown();inputchange(this.parentNode.querySelector('input[type=number]'))"
                            >
                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
 </svg>
                           </button>
           
-                          <input id="form1" min="0" name="quantity" value="2" type="number"
-                            class="form-control form-control-sm" />
+                          <input  min="0" name="quantity"  type="number"
+                            class="form-control form-control-sm" onchange='inputchange(this)' />
           
-                          <button class="btn btn-link px-2"  onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                          <button class="btn btn-link px-2"  onclick="this.parentNode.querySelector('input[type=number]').stepUp();inputchange(this.parentNode.querySelector('input[type=number]'))"
                           >
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
@@ -155,9 +152,9 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
                           <h5 class="mb-0" id="priceProduct"></h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                          <a href="#!" class="text-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                          <button  class="text-danger button-delete" onclick='borrarPro(this)' ><svg disabled xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                           <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                        </svg></a>
+                        </svg></button>
                         </div>
                       </div>
                     </div>
@@ -166,7 +163,10 @@ class="collection-hero{% if section.settings.show_collection_image and collectio
               </div>
             </div>
           </section>
-        </div>
+          <section id="basketProductsEmpty" class="none">Hola no tienes mas productos, sigue comprando</section>
+          <div id="storageProduct"></div>
+          </div>
+          <button id="continuaComprando" class="position-absolute btn btn-success" style="bottom:20%">Continua comprando</button>
     </div>
     
 </div>
