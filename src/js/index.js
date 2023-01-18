@@ -1,25 +1,27 @@
 import "../styles.css";
 import './addcart'
-import './autentication'
+
 
 var storedProducts = JSON.parse(localStorage.getItem("storedProducts"));
 const sectionempty = document.getElementById('avisonoproducts')
+const totalorders = document.getElementById('totalproducts')
+const totalcustomers = document.getElementById('totalcustomers')
 
 function pruebaConsole(){
-    // fetch('http://localhost:3000/allproducts', {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
+    fetch('https://testeo-theta.vercel.app/allorders', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
        
-    //   })  .then((res) => res.json())
-    //   .then(response => {
-    //     console.log(response)
-    
-    //   })
-    //   .catch((error) => {
-    //     console.log('Error:', error);
-    //   });
+      })  .then((res) => res.json())
+      .then(response => {
+        console.log(response)
+        totalorders.innerHTML=response.count + 'products'
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
 const clasebutton=document.querySelectorAll('.buton_prueba')
 if (storedProducts === null || storedProducts.length === 0) {
     sectionempty &&sectionempty.classList.remove('none')
