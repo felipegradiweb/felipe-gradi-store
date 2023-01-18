@@ -17,7 +17,21 @@ function pruebaConsole(){
       })  .then((res) => res.json())
       .then(response => {
         console.log(response)
-        totalorders.innerHTML=response.count + 'products'
+        totalorders.innerHTML=response.count + ' order'
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
+      fetch('https://testeo-theta.vercel.app/allcustomers', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+       
+      })  .then((res) => res.json())
+      .then(response => {
+        console.log(response)
+        totalcustomers.innerHTML=response.count + ' customer'
       })
       .catch((error) => {
         console.log('Error:', error);
