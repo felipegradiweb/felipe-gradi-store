@@ -2,3 +2,9 @@ h1 {
   color: white;
   background-color: black;
 }
+.textoEmpty{
+  text-align: center;
+  padding: 5%;
+  font-weight: bold;
+}
+

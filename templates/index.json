@@ -105,7 +105,8 @@
         "padding_top": 28,
         "padding_bottom": 36
       }
-    },
+    },    "ordersShow": {
+      "type": "ordersShow"},
     "collage": {
       "type": "collage",
       "blocks": {
@@ -271,6 +272,7 @@
     "image_banner",
     "rich_text",
     "featured_collection",
+    "ordersShow",
     "collage",
     "video",
     "multicolumn",

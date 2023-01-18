@@ -4,3 +4,59 @@ h1 {
   color: $primary-color;
   background-color: $bg;
 }
+
+
+.none{
+display:none
+}
+.div-image-container{
+  position: relative
+}
+
+.btn-move-page{
+  cursor: pointer;
+  color:#EBB7B7;
+  background:transparent;
+  border:1px solid #EBB7B7 ;
+  padding:1rem
+}
+.column-right{
+  width: 20%;
+
+    margin:1% auto auto auto;
+    justify-content: center;
+    text-align: center;
+    position: fixed;
+    right: 0;
+}
+
+.opacity-low-heart{
+  opacity: 0.2;
+}
+
+
+.button-favorite{
+  border-radius:100px;
+  padding:0.6rem;
+  border:1px solid rgb(241, 236, 236);
+  position:absolute;
+  color:red;
+  right: 0;
+  
+  background:rgb(241, 236, 236);
+  justify-content:center;
+  display:flex;flex-direction:column
+}
+
+.button-favorite-selected{
+  border-radius:100px;
+  padding:0.6rem;
+  border:1px solid rgb(241, 236, 236);
+  position:absolute;
+  color:red;
+  right: 0;
+  
+  background:rgb(241, 236, 236);
+  justify-content:center;
+  display:flex;flex-direction:column
+}

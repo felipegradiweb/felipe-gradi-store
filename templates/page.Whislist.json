@@ -1,27 +1,13 @@
 {
   "sections": {
-<<<<<<< HEAD
    "whislistTest": {
       "type": "whislistTest",
       "settings": {
         "color_scheme": "background-1"
-=======
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
->>>>>>> f096c0c5062834fff8d99fe4ef6acf04f1f256ef
       }
     }
   },
   "order": [
-<<<<<<< HEAD
   "whislistTest"
   ]
 }
-=======
-    "main"
-  ]
-}
->>>>>>> f096c0c5062834fff8d99fe4ef6acf04f1f256ef
