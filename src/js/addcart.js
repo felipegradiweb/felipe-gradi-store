@@ -5,7 +5,7 @@ const continuaComprando=document.querySelectorAll('.continuaComprando')
 const sectionempty = document.getElementById('basketProductsEmpty')
 const clasebuttonCart=document.querySelectorAll('.addto-card')
 function iniciarcart(){
-clasebuttonCart.forEach((e,index)=>{
+clasebuttonCart.forEach((e)=>{
     e.addEventListener('click',(ele)=>{ 
       ele.preventDefault()
         agregarProductoAlCarrito(e.value)

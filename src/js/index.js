@@ -92,7 +92,6 @@ heart_favorito.forEach(e=>{
 
 function verfavoritos(){
     const producto_favorito=document.querySelectorAll('.favorite-product')
-   
     const heart_favorito_remove=document.querySelectorAll('.button-favorite-selected')
     var elementosarray=[]
     storedProducts.forEach((e)=>{

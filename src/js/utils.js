@@ -1,8 +1,6 @@
 const storageProductDiv = document.getElementById('storageProduct')
 const sectionfull = document.getElementById('allCartProducts')
- 
 const responseModal = document.querySelector(".modal-container");
-
 const sectionempty = document.getElementById('basketProductsEmpty')
 
 function changeallproducts(collectionref,item){
