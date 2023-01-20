@@ -107,6 +107,12 @@
       }
     },    "ordersShow": {
       "type": "ordersShow"},
+      "whislistTest": {
+        "type": "whislistTest",
+        "settings": {
+          "color_scheme": "background-1"
+        }
+      },
     "collage": {
       "type": "collage",
       "blocks": {
@@ -272,6 +278,7 @@
     "image_banner",
     "rich_text",
     "featured_collection",
+    "whislistTest",
     "ordersShow",
     "collage",
     "video",
