@@ -24,7 +24,9 @@ Usage:
     <div style="width:100%;display:flex;justify-content:center;flex-direction:column; margin:auto">
       <div class="div-image-container">
         {% render 'heartFavorite', claseButton: 'button-favorite opacity-low-heart', product_id: card_product.id %}
-        <div><img src="{{ card_product.media[1] | image_url:width: 200, height: 200}}"></div>
+        <div>
+
+          <img src="{{ card_product.media[1] | image_url:width: 200, height: 200}}"></div>
       </div>
       <div class="card__content" style="margin: auto;text-align:center">
         <div class="card__information">
