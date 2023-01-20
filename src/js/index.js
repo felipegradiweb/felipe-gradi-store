@@ -56,12 +56,9 @@ function listadeseos(){
 
 if (storedProducts == null || storedProducts.length === 0) {
     sectionempty &&sectionempty.classList.remove('none')
-   
     storedProducts = [];
  
 }
-
-
 
 heart_favorito.forEach(e=>{
  var array =storedProducts.map(e=>e.id)
