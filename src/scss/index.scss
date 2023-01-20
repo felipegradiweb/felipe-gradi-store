@@ -1,9 +1,3 @@
-// $primary-color: white;
-// $bg: black;
-// h1 {
-//   color: $primary-color;
-//   background-color: $bg;
-// }
 
 
 .none{
@@ -29,6 +23,14 @@ display:none
     position: fixed;
     right: 0;
 }
+.column-right-home{
+  width: 20%;
+
+    margin:1% auto auto auto;
+    justify-content: center;
+    text-align: center;
+ 
+}
 
 .opacity-low-heart{
   opacity: 0.2;
@@ -47,6 +49,10 @@ display:none
   justify-content:center;
   display:flex;flex-direction:column
 }
+.input-modal-active{
+  width: 35px;
+  margin: auto;
+}
 
 .button-favorite-selected{
   border-radius:100px;
@@ -59,4 +65,7 @@ display:none
   background:rgb(241, 236, 236);
   justify-content:center;
   display:flex;flex-direction:column
+}
+svg {
+  pointer-events: none;
 }

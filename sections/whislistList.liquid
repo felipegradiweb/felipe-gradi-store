@@ -4,107 +4,29 @@
 -%}
 <script defer src="{{ 'script.js' | asset_url  }}"></script>
 {{ 'style.css' | asset_url | stylesheet_tag }}
-<div style="width:100%;display:flex">
+{{ 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' | stylesheet_tag }}
+<div class="none my-5" id="deseos">
+  <div style="width:100%;display:flex ">
 
-  <div style="width:80%">
-    <div id="avisonoproducts" class="none textoEmpty">No tienes productos agragadosa tu Whislist...</div>
-    <ul
-      id="product-gridFavoritelist"
+    <div style="width:80%">
+      <div id="avisonoproducts" class="none textoEmpty">No tienes productos agragadosa tu Whislist...</div>
+      <ul
+        id="product-gridFavoritelist"
 
-      data-id="{{ section.id }}"
-      style="display:flex;justify-content: center; flex-wrap: wrap">
-      {%- for product in collections[all_cards].products -%}
-        <div id="favorite-{{product.id}}" value="{{product.id}}">
-          {% render 'card-favoriteList', card_product: product %}
-        </div>
-      {% endfor %}
-    </ul>
-  </div>
-  <div class="column-right">
-    <button class="btn-move-page" id="goto-List-products">Volver a mis productos</button>
-    <br/>
-    <div class="modal-container  none">
-      <div class="modal_unit" style="overflow:auto;height:40rem">
-        <h3 class="fw-normal mb-0 text-black py-4">Shopping Cart</h3>
-        <section
-          id="allCartProducts"
-          class="none"
-          style="background-color: #eee;">
-          <div class="container h-100 py-5">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-10">
-                <div class="d-flex justify-content-between align-items-center mb-4"></div>
-                <i class="bi bi-plus-circle-fill"></i>
-                <div class="card rounded-3 mb-4">
-                  <div class="card-body p-4">
-                    <div class=" d-flex justify-content-between align-items-center">
-                      <div class="col-md-2 col-lg-2 col-xl-2">
-                        <img
-                          id="imageProduct"
-                          style="width: 100px"
-                          class="img-fluid rounded-3"
-                          alt="Product">
-                      </div>
-                      <div class="col-md-3 col-lg-3 col-xl-3">
-                        <p
-                          class="lead fw-normal mb-2 "
-                          name="nameProduct"
-                          id="nameProduct"></p>
-                        <p>
-                          <span class="text-muted">Color:
-                          </span>
-                          <span id="colorProduct"></span>
-                        </p>
-                      </div>
-                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                        <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-dash-circle-fill"
-                            viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
-                          </svg>
-                        </button>
-
-                        <input
-                          min="0"
-                          name="quantity"
-                          type="number" />
-
-                        <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            fill="currentColor"
-                            class="bi bi-plus-circle-fill"
-                            viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                          </svg>
-                        </button>
-                      </div>
-                      <div>
-                        <h5 id="priceProduct"></h5>
-                      </div>
-                      <div>
-                        <button class="button_delete button-delete">
-                          Remover
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        data-id="{{ section.id }}"
+        style="display:flex;justify-content: center; flex-wrap: wrap">
+        {%- for product in collections[all_cards].products -%}
+          <div id="favorite-{{product.id}}" value="{{product.id}}">
+            {% render 'card-favoriteList', card_product: product %}
           </div>
-        </section>
-        <section id="basketProductsEmpty" class="none">Hola no tienes mas productos, sigue comprando</section>
-        <div id="storageProduct"></div>
-      </div>
-      <button class="position-absolute btn btn-success continuaComprando" style="bottom:30%">Continua comprando</button>
+        {% endfor %}
+      </ul>
     </div>
+    <div class="column-right">
+      <button class="btn-move-page" id="goto-List-products">Volver a mis productos</button>
+
+
+    </div>
+    {% render 'modal-compras' %}
   </div>
 </div>
