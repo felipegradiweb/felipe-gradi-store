@@ -1,0 +1,104 @@
+<div class="modal-container  none">
+  <div class="modal_unit">
+    <h3 class="fw-normal mb-0 text-black py-4">Shopping Cart</h3>
+    <section
+      id="allCartProducts"
+      class="none"
+      style="background-color: #eee;">
+      <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-10">
+            <div class="d-flex justify-content-between align-items-center mb-4"></div>
+            <i class="bi bi-plus-circle-fill"></i>
+            <div class="card rounded-3 mb-4">
+              <div class="card-body p-4">
+                <div class=" d-flex justify-content-between align-items-center">
+                  <div class="col-md-2 col-lg-2 col-xl-2">
+                    <img
+                      id="imageProduct"
+                      style="width: 100px"
+                      class="img-fluid rounded-3"
+                      alt="Product">
+                  </div>
+                  <div class="col-md-3 col-lg-3 col-xl-3">
+                    <p
+                      class="lead fw-normal mb-2 "
+                      name="nameProduct"
+                      id="nameProduct"></p>
+                    <p>
+                      <span class="text-muted">Color:
+                      </span>
+                      <span id="colorProduct"></span>
+                    </p>
+                  </div>
+                  <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                    <button class="input-down-btn btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-dash-circle-fill"
+                        viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z" />
+                      </svg>
+                    </button>
+
+                    <input
+                      class="input-modal-active"
+                      min="0"
+                      name="quantity"
+                      type="number" />
+
+                    <button class="input-up-btn btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-plus-circle-fill"
+                        viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div>
+                    <h5 id="priceProduct"></h5>
+                  </div>
+                  <div>
+                    <button class="button_delete button-delete">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-trash"
+                        viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="basketProductsEmpty" class="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-cart"
+        viewBox="0 0 16 16">
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+      </svg><br/>
+      Hola no tienes mas productos, sigue comprando
+    </section>
+    <div id="storageProduct"></div>
+  </div>
+  <button class=" btn btn-success continuaComprando">Continua comprando</button>
+</div>
