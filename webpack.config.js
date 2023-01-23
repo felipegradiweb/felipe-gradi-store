@@ -2,139 +2,63 @@
  * * Webpack configuration.
  */
 
-<<<<<<< HEAD
-const config = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, './assets'),
-    filename: '[name].[contenthash].js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          },
-          'postcss-loader'
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ]
-      },
-      {
-        test: /\.svg$/,
-        use: 'file-loader'
-      },
-      {
-        test: /\.png$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              mimetype: 'image/png'
-            }
-          }
-        ]
-      }
-    ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      appMountId: 'app',
-      filename: 'index.html'
-    }),
-    new MiniCssExtractPlugin()
-  ],
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
-        }
-      }
-    }
-  }
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+
+const JS_DIR = path.resolve(__dirname, "src/js");
+const SASS_DIR = path.resolve(__dirname, "src/scss");
+const BUILD_DIR = path.resolve(__dirname, "assets");
+
+const entry = {
+  script: JS_DIR + "/index.js",
+  style: SASS_DIR + "/index.scss",
 };
 
-module.exports = config;
-=======
- const path = require("path");
- const MiniCssExtractPlugin = require("mini-css-extract-plugin");
- const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
- const TerserPlugin = require("terser-webpack-plugin");
- 
- const JS_DIR = path.resolve(__dirname, "src/js");
- const SASS_DIR = path.resolve(__dirname, "src/scss");
- const BUILD_DIR = path.resolve(__dirname, "assets");
- 
- const entry = {
-   script: JS_DIR + "/index.js",
-   style: SASS_DIR + "/index.scss",
- };
- 
- const output = {
-   path: BUILD_DIR,
-   filename: "[name].js",
- };
- 
- const plugins = () => [
-   new MiniCssExtractPlugin({
-     filename: "[name].css",
-   }),
- ];
- 
- const rules = [
-   {
-     test: /\.js$/,
-     include: [JS_DIR],
-     exclude: /node_modules/,
-     use: "babel-loader",
-   },
-   {
-     test: /\.css$/i,
-     use: ["style-loader", "css-loader"],
-   },
-   {
-     test: /\.scss$/,
-     exclude: /node_modules/,
-     use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-   }
- ];
- 
- module.exports = () => ({
-   entry: entry,
- 
-   output: output,
- 
-   //devtool: 'source-map',
- 
-   module: {
-     rules: rules,
-   },
- 
-   optimization: {
-     minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
-   },
- 
-   plugins: plugins(),
- });
->>>>>>> main
+const output = {
+  path: BUILD_DIR,
+  filename: "[name].js",
+};
+
+const plugins = () => [
+  new MiniCssExtractPlugin({
+    filename: "[name].css",
+  }),
+];
+
+const rules = [
+  {
+    test: /\.js$/,
+    include: [JS_DIR],
+    exclude: /node_modules/,
+    use: "babel-loader",
+  },
+  {
+    test: /\.css$/i,
+    use: ["style-loader", "css-loader"],
+  },
+  {
+    test: /\.scss$/,
+    exclude: /node_modules/,
+    use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+  },
+];
+
+module.exports = () => ({
+  entry: entry,
+
+  output: output,
+
+  //devtool: 'source-map',
+
+  module: {
+    rules: rules,
+  },
+
+  optimization: {
+    minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+  },
+
+  plugins: plugins(),
+});
