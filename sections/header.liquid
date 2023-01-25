@@ -293,9 +293,16 @@
         </details>
       </header-drawer>
     {%- endif -%}
+  
+ 
+
+
+
 
     {%- if section.settings.logo_position == 'top-center' or section.settings.menu == blank -%}
-      <details-modal class="header__search">
+    
+    <details-modal class="header__search">
+   
         <details>
           <summary class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}">
             <span>
@@ -336,6 +343,7 @@
                     >
                     <label class="field__label" for="Search-In-Modal-1">{{ 'general.search.search' | t }}</label>
                     <input type="hidden" name="options[prefix]" value="last">
+                    
                     <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
                       <svg class="icon icon-search" aria-hidden="true" focusable="false" role="presentation">
                         <use href="#icon-search">
@@ -368,11 +376,13 @@
         </details>
       </details-modal>
     {%- endif -%}
-
+ 
     {%- if section.settings.logo_position != 'middle-center' -%}
+  
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
+      
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
             {%- if section.settings.logo != blank -%}
               {%- assign logo_alt = section.settings.logo.alt | default: shop.name | escape -%}

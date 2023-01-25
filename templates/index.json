@@ -6,11 +6,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-<<<<<<< HEAD
-            "heading": "Image bannedthtsr",
-=======
             "heading": "Bags",
->>>>>>> main
             "heading_size": "h0"
           }
         },
@@ -24,13 +20,8 @@
         "button": {
           "type": "buttons",
           "settings": {
-<<<<<<< HEAD
-            "button_label_1": "Shop ererereall",
-            "button_link_1": "shopify:\/\/collections\/all",
-=======
             "button_label_1": "Shop all",
             "button_link_1": "shopify:\/\/pages\/productos-gradiweb",
->>>>>>> main
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
