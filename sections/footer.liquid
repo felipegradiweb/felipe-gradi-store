@@ -256,6 +256,7 @@
             {%- form 'localization', id: 'FooterCountryFormNoScript', class: 'localization-form' -%}
               <div class="localization-form__select">
                 <h2 class="visually-hidden" id="FooterCountryLabelNoScript">{{ 'localization.country_label' | t }}</h2>
+                {{ shop.currency | json }}
                 <select
                   class="localization-selector link"
                   name="country_code"
