@@ -1,4 +1,5 @@
 import "./addcart";
+import "./markets";
 import i18next from "i18next";
 import enTranslation from "../../locales/en.default.json";
 import esTranslation from "../../locales/es.json";
